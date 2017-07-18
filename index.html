@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="weatherApp">
+
+<head>
+<meta charset="utf-8" />
+<title>Weather App</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script>document.write('<base href="' + document.location + '" />');</script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script data-require="bootstrap@*" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/controller.js"></script>
+<script src="assets/js/service.js"></script>
+<script src="assets/js/directive.js"></script>
+<script src="assets/js/filter.js"></script>
+<link rel="stylesheet" href="assets/css/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" href="assets/css/app.css"/>
+</head>
+
+<body ng-controller="weatherCtrl">
+<form>
+<div class="container">
+	<div class="weather-search">
+		<div class="row">
+			<div class="col-xs-4">
+				<div>
+					<form class="form-inline" role="form">
+						<label class="sr-only" for="location">City</label>
+						<input ng-model="city" type="text" class="form-control" id="location" placeholder="City">
+						<button ng-click="findWoeid(city)" type="submit" class="btn btn-primary">Search!</button>
+						<span ng-show="message" class="alert"><span class="glyphicon glyphicon-arrow-left">&nbsp;</span>{{message}}</span>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+<p ng-show="city">Searching the forecasts for: {{city}}</p>
+<div>
+<h4>City: {{ place[0].title }}, Latt and long: ({{ place[0].latt_long }})</h4>
+</div>
+<div class="weather-data" ng-show="true">
+	<div class="row">
+		<div class="col-xs-6">
+			<div weather-details="" show-entry="placeDetails.consolidated_weather[0]"></div>
+		</div>
+		 <div class="col-xs-6">
+			Average Temparature:
+			<bars data="40,4,22,15,16"></bars>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+			<div weather-details="" show-entry="placeDetails.consolidated_weather[1]"></div>
+		</div>
+		<div class="col-xs-3">
+			<div weather-details="" show-entry="placeDetails.consolidated_weather[2]"></div>
+		</div>
+		<div class="col-xs-3">
+			<div weather-details="" show-entry="placeDetails.consolidated_weather[3]"></div>
+		</div>
+		<div class="col-xs-3">
+			<div weather-details="" show-entry="placeDetails.consolidated_weather[4]"></div>
+		</div>
+	</div>
+</div>
+<button ng-click="findWoeid('london'); city = ''" type="submit" class="btn btn-primary">Reset!</button>
+</body>
+
+</html>

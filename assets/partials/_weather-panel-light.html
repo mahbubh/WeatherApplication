@@ -1,0 +1,23 @@
+<div class="weather panel panel-primary">
+    <div class="panel-heading">{{useDayForecast.applicable_date | date : "fullDate" }}</div>
+    <div class="panel-body">
+        <div>
+            <p class="lead">
+                <img ng-src="{{getIconImageUrl(useDayForecast.weather_state_abbr)}}" />
+                {{useDayForecast.the_temp | number:1}}&#176;C {{ useDayForecast.weather_state_name }}
+            </p>
+			<p>
+                High: {{useDayForecast.max_temp | temp }}&#176;C&nbsp;&#126;&nbsp;
+                Low: {{useDayForecast.min_temp | temp }}&#176;C
+            </p>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <small>
+            Pressure: {{useDayForecast.air_pressure}} mPh&nbsp;&#126;&nbsp;
+            Humidity: {{useDayForecast.humidity}}&#176;C&nbsp;&#126;&nbsp;
+            Wind Direction: {{useDayForecast.wind_direction_compass}}&nbsp;&#126;&nbsp;
+            Visibility: {{useDayForecast.visibility}}
+        </small>
+    </div>
+</div>
