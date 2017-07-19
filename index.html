@@ -30,6 +30,7 @@
 						<label class="sr-only" for="location">City</label>
 						<input ng-model="city" type="text" class="form-control" id="location" placeholder="City">
 						<button ng-click="findWoeid(city)" type="submit" class="btn btn-primary">Search!</button>
+						<button ng-click="findWoeid('london'); city = ''" type="submit" class="btn btn-primary">Reset!</button>
 						<span ng-show="message" class="alert"><span class="glyphicon glyphicon-arrow-left">&nbsp;</span>{{message}}</span>
 					</form>
 				</div>
@@ -48,8 +49,8 @@
 			<div weather-details="" show-entry="placeDetails.consolidated_weather[0]"></div>
 		</div>
 		 <div class="col-xs-6">
-			Average Temparature:
-			<bars data="40,4,22,15,16"></bars>
+			<u>Average Temparature:</u> <b>{{ fiveDayAvgTemp | temp }}</b> <br/>
+			<bars data="40.0,30.3333,33.25,22.0,15.0,16.0000"></bars>
 		</div>
 	</div>
 	<div class="row">
@@ -67,7 +68,6 @@
 		</div>
 	</div>
 </div>
-<button ng-click="findWoeid('london'); city = ''" type="submit" class="btn btn-primary">Reset!</button>
 </body>
 
 </html>
